@@ -16,6 +16,10 @@ if [ -d .xmonad/ ]; then
     mv .xmonad xmonad.old
 fi
 
+if [ -d .ssh/ ]; then
+    mv .ssh ssh.old
+fi
+
 # Don't think I want a common .emacs.d, what with all the backup files.
 # if [ -d .emacs.d/ ]; then
 #     mv .emacs.d .emacs.d~
@@ -40,17 +44,11 @@ fi
 if [ -f .gitconfig ]; then
     mv .gitconfig gitconfig.old
 fi
-if [ -f .keyconf.xkb ]; then
-    mv .keyconf.xkb keyconf.xkb.old
-fi
 if [ -f .screenrc ]; then
     mv .screenrc screenrc.old
 fi
 if [ -f .tmux.conf ]; then
     mv .tmux.conf tmux.conf.old
-fi
-if [ -f .xinitrc ]; then
-    mv .xinitrc xinitrc.old
 fi
 if [ -f .Xresources ]; then
     mv .Xresources Xresources.old
@@ -67,11 +65,10 @@ ln -sf .myconfig/.conkyrc .
 ln -sf .myconfig/.conkyrc_x .
 ln -sf .myconfig/.emacs .
 ln -sf .myconfig/.gitconfig .
-ln -sf .myconfig/.keyconf.xkb .
 ln -sf .myconfig/.screenrc .
 ln -sf .myconfig/.tmux.conf .
-ln -sf .myconfig/.xinitrc .
 ln -sf .myconfig/.Xresources .
+ln -sf $HOME/.myconfig/ssh/config .ssh/
 
 # links to directories
 ln -sf .myconfig/.fluxbox .
