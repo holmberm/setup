@@ -16,9 +16,10 @@ if [ -d .xmonad/ ]; then
     mv .xmonad xmonad.old
 fi
 
-if [ -d .ssh/ ]; then
-    mv .ssh ssh.old
-fi
+# This seems completely retarded.
+# if [ -d .ssh/ ]; then
+#     mv .ssh ssh.old
+# fi
 
 # Don't think I want a common .emacs.d, what with all the backup files.
 # if [ -d .emacs.d/ ]; then
@@ -53,6 +54,12 @@ fi
 if [ -f .Xresources ]; then
     mv .Xresources Xresources.old
 fi
+if [ -f .emacs.d/custom-functions.el ]; then
+    mv .emacs.d/custom-functions-old.el
+fi
+if [ -f .ssh/config ]; then
+    mv .ssh/config sshConfig.old
+fi
 
 # clone config files
 git clone git@github.com:holmberm/myconfig.git
@@ -69,6 +76,7 @@ ln -sf .myconfig/.screenrc .
 ln -sf .myconfig/.tmux.conf .
 ln -sf .myconfig/.Xresources .
 ln -sf $HOME/.myconfig/ssh/config .ssh/
+ln -sf $HOME/.myconfig/custom-functions.el .emacs.d/
 
 # links to directories
 ln -sf .myconfig/.fluxbox .
